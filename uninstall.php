@@ -29,3 +29,7 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+if ( get_option( 'wc_custom_delivery_slots_options' ) !== false ) {
+    delete_option( 'wc_custom_delivery_slots_options' );
+}

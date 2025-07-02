@@ -1,4 +1,191 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.bg-25watts {
+    background: linear-gradient(90deg, var(--blue) 0%, hsl(230, 84%, 20%) 50%, black 100%);
+}
+
+.padding-horizontal-l {
+    padding-left: var(--space-l);
+    padding-right: var(--space-l);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.gap-s {
+    gap: 1.28rem;
+    gap: var(--space-s);
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.padding-l {
+    padding: 2rem;
+    padding: var(--space-l);
+}
+
+.max-width-20 {
+    max-width: 20rem;
+}
+
+.text-xs {
+    font-size: 1.26rem;
+    font-size: var(--text-xs);
+}
+
+.transition-global {
+    transition: all 0.3s;
+}
+
+.underline-none {
+    text-decoration: none;
+}
+
+.underline {
+    -webkit-text-decoration: underline;
+    text-decoration: underline;
+}
+
+.text-black {
+    color: var(--black);
+}
+
+.font-700 {
+    font-weight: 700;
+}
+
+.text-l {
+    font-size: 1.8rem;
+    font-size: var(--text-l);
+}
+
+.text-m {
+    font-size: 1.6rem;
+    font-size: var(--text-m);
+}
+
+.margin-vertical-m {
+    margin-top: 1.6rem;
+    margin-top: var(--space-m);
+    margin-bottom: 1.6rem;
+    margin-bottom: var(--space-m);
+}
+
+.gap-4xs {
+    gap: 0.52rem;
+    gap: var(--space-4xs);
+}
+
+.items-middle {
+    align-items: center;
+}
+
+.margin-top-s {
+    margin-top: 1.28rem;
+    margin-top: var(--space-s);
+}
+
+.max-width-10 {
+    max-width: 10rem;
+}
+
+.max-width-50 {
+    max-width: 50rem;
+}
+
+.max-width-60 {
+    max-width: 60rem;
+}
+
+.max-site-width {
+    max-width: 140rem;
+    width: 100%;
+}
+
+.bg-dark-grey-2 {
+    background-color: var(--dark-grey-2);
+}
+
+.italic-none {
+    font-style: normal;
+}
+
+.aspect-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+.gap-3xs {
+    gap: 0.66rem;
+    gap: var(--space-3xs);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.columns-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.gap-l {
+    gap: 2rem;
+    gap: var(--space-l);
+}
+
+.margin-bottom-2xs {
+    margin-bottom: 0.82rem;
+    margin-bottom: var(--space-2xs);
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+:root {
+    --space-4xs: clamp(0.52rem, calc(-0.03vw + 0.53rem), 0.49rem);
+    --space-3xs: clamp(0.66rem, calc(0.04vw + 0.64rem), 0.7rem);
+    --space-2xs: clamp(0.82rem, calc(0.16vw + 0.77rem), 0.99rem);
+    --space-xs: clamp(1.02rem, calc(0.35vw + 0.91rem), 1.4rem);
+    --space-s: clamp(1.28rem, calc(0.65vw + 1.07rem), 1.98rem);
+    --space-m: clamp(1.6rem, calc(1.11vw + 1.24rem), 2.8rem);
+    --space-l: clamp(2rem, calc(1.81vw + 1.42rem), 3.96rem);
+    --space-xl: clamp(2.5rem, calc(2.87vw + 1.58rem), 5.6rem);
+    --space-2xl: clamp(3.13rem, calc(4.44vw + 1.71rem), 7.92rem);
+    --space-3xl: clamp(3.91rem, calc(6.75vw + 1.75rem), 11.19rem);
+    --space-4xl: clamp(4.88rem, calc(10.13vw + 1.64rem), 15.83rem);
+    --text-xs: clamp(1.26rem, calc(-0.23vw + 1.34rem), 1.01rem);
+    --text-s: clamp(1.42rem, calc(-0.07vw + 1.44rem), 1.35rem);
+    --text-m: clamp(1.6rem, calc(0.19vw + 1.54rem), 1.8rem);
+    --text-l: clamp(1.8rem, calc(0.55vw + 1.62rem), 2.4rem);
+    --text-xl: clamp(2.02rem, calc(1.09vw + 1.68rem), 3.2rem);
+    --text-2xl: clamp(2.28rem, calc(1.84vw + 1.69rem), 4.26rem);
+    --text-3xl: clamp(2.56rem, calc(2.89vw + 1.64rem), 5.68rem);
+    --text-4xl: clamp(2.88rem, calc(4.34vw + 1.49rem), 7.58rem);
+    --radius-xs: clamp(0.4rem, calc(0vw + 0.4rem), 0.4rem);
+    --radius-s: clamp(0.6rem, calc(-0.19vw + 0.86rem), 0.8rem);
+    --radius-m: clamp(1rem, calc(-0.19vw + 1.26rem), 1.2rem);
+    --radius-l: clamp(1.6rem, calc(-0.37vw + 2.12rem), 2rem);
+    --radius-xl: clamp(2.6rem, calc(-0.56vw + 3.38rem), 3.2rem);
+    --radius-full: 999rem;
+    --dark-grey: #2e3548;
+    --white: #ffffff;
+    --black: black;
+    --transparent: transparent;
+    --dark-grey-1: #1e293b;
+    --dark-grey-2: #373f58;
+    --header-height: 0px;
+    --blue: #0845FF;
+    --light-blue: #dde5ff;
+}

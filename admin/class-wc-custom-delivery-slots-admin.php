@@ -64,14 +64,27 @@ class Wc_Custom_Delivery_Slots_Admin {
 			'dashicons-clock',
 			10
 		);
+
+		add_submenu_page(
+			'wc-custom-delivery-slots',
+			'Configurar horarios',
+			'Configurar horarios',
+			'manage_options',
+			'wc-custom-delivery-slots-slots-config',
+			array( $this, 'display_slots_config_page' )
+		);
 	}
 
 	public function display_admin_page() {
-		include 'partials/wc-custom-delivery-slots-admin-display.php';
+		include 'partials/views/main-page/wc-custom-delivery-slots-admin-main-page.php';
+	}
+
+	public function display_slots_config_page() {
+		include 'partials/views/slots-config/wc-custom-delivery-slots-admin-slots-config.php';
 	}
 
 	public function register_settings() {
-		register_setting( 'wc_custom_delivery_slots_group', 'wc_custom_delivery_slots_options', array( $this, 'validate_options' ) );
+		register_setting( 'wc_custom_delivery_slots_group', 'wc_custom_delivery_slots', array( $this, 'validate_options' ) );
 	}
 
 	/**
@@ -118,6 +131,30 @@ class Wc_Custom_Delivery_Slots_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wc-custom-delivery-slots-admin.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	public function validate_options($input) {
+		// Si no se envió el campo de métodos de envío, lo seteamos como array vacío
+		if (!isset($input['_wc_cds_shipping_methods'])) {
+			$input['_wc_cds_shipping_methods'] = array();
+		}
+		// Procesar fechas especiales para asegurar que se guarden todas
+		if (isset($input['_wc_cds_special_dates']) && is_array($input['_wc_cds_special_dates'])) {
+			$special_dates = array();
+			foreach ($input['_wc_cds_special_dates'] as $row) {
+				if (!empty($row['date'])) {
+					$special_dates[] = array(
+						'date' => sanitize_text_field($row['date']),
+						'fee' => isset($row['fee']) ? floatval($row['fee']) : '',
+						'every_year' => isset($row['every_year']) ? '1' : '',
+					);
+				}
+			}
+			$input['_wc_cds_special_dates'] = $special_dates;
+		} else {
+			$input['_wc_cds_special_dates'] = array();
+		}
+		return $input;
 	}
 
 }

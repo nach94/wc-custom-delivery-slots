@@ -31,7 +31,7 @@
 
 	jQuery(document).ready(function($) {
 		// Selector para los checkboxes de métodos de envío
-		var selector = 'input[name="wc_cds[_wc_cds_shipping_methods][]"]';
+		var selector = 'input[name="wc_custom_delivery_slots[_wc_cds_shipping_methods][]"]';
 		$(document).on('change', selector, function() {
 			if ($(this).val() === '__all__') {
 				if ($(this).is(':checked')) {
@@ -46,29 +46,35 @@
 			}
 		});
 
+		// Contador global para los índices de fechas especiales
+		var wcCdsSpecialDateIndex = $('#wc-cds-special-dates-wrapper .wc-cds-special-date-row').length;
+
 		function getRowHtml(index) {
 			return '<div class="wc-cds-special-date-row" style="display: flex; flex-direction: column; gap: 8px; position: relative; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; margin-bottom: 10px;">' +
 				'<div>' +
 					'<label for="_special_date_' + index + '">Selecciona una fecha especial</label><br>' +
-					'<input id="_special_date_' + index + '" type="date" name="wc_cds[_wc_cds_special_dates][' + index + '][date]" required>' +
+					'<input id="_special_date_' + index + '" type="date" name="wc_custom_delivery_slots[_wc_cds_special_dates][' + index + '][date]">' +
 				'</div>' +
 				'<div>' +
 					'<label for="_special_fee_' + index + '">Selecciona una tarifa extra</label><br>' +
-					'<input id="_special_fee_' + index + '" type="number" name="wc_cds[_wc_cds_special_dates][' + index + '][fee]" min="0" step="0.01" placeholder="Tarifa extra" style="width:100px;" required>' +
+					'<input id="_special_fee_' + index + '" type="number" name="wc_custom_delivery_slots[_wc_cds_special_dates][' + index + '][fee]" min="0" step="0.01" placeholder="Tarifa extra" style="width:100px;">' +
 				'</div>' +
 				'<div>' +
-					'<input id="_special_every_year_' + index + '" type="checkbox" name="wc_cds[_wc_cds_special_dates][' + index + '][every_year]" value="1">' +
+					'<input id="_special_every_year_' + index + '" type="checkbox" name="wc_custom_delivery_slots[_wc_cds_special_dates][' + index + '][every_year]" value="1">' +
 					'<label for="_special_every_year_' + index + '">Usar cada año</label>' +
 				'</div>' +
 				'<button type="button" class="button wc-cds-remove-special-date" title="Eliminar" style="position: absolute; top: 50%; right: 5px; transform: translateY(-50%);">&times;</button>' +
 			'</div>';
 		}
+
 		$(document).on('click', '#wc-cds-add-special-date', function(e) {
 			e.preventDefault();
 			var wrapper = $('#wc-cds-special-dates-wrapper');
-			var index = wrapper.find('.wc-cds-special-date-row').length;
-			wrapper.append(getRowHtml(index));
+			// Usar el contador global y luego incrementarlo
+			wrapper.append(getRowHtml(wcCdsSpecialDateIndex));
+			wcCdsSpecialDateIndex++;
 		});
+
 		$(document).on('click', '.wc-cds-remove-special-date', function() {
 			if ($('#wc-cds-special-dates-wrapper .wc-cds-special-date-row').length > 1) {
 				$(this).closest('.wc-cds-special-date-row').remove();
