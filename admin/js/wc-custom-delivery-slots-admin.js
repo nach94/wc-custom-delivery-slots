@@ -50,7 +50,7 @@
 		var wcCdsSpecialDateIndex = $('#wc-cds-special-dates-wrapper .wc-cds-special-date-row').length;
 
 		function getRowHtml(index) {
-			return '<div class="wc-cds-special-date-row" style="display: flex; flex-direction: column; gap: 8px; position: relative; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; margin-bottom: 10px;">' +
+			return '<div class="wc-cds-special-date-row" class="slots-repeater">' +
 				'<div>' +
 					'<label for="_special_date_' + index + '">Selecciona una fecha especial</label><br>' +
 					'<input id="_special_date_' + index + '" type="date" name="wc_custom_delivery_slots[_wc_cds_special_dates][' + index + '][date]">' +

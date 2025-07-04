@@ -2,6 +2,39 @@
     background: linear-gradient(90deg, var(--blue) 0%, hsl(230, 84%, 20%) 50%, black 100%);
 }
 
+.slots-repeater {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.remove-slot {
+    color: #b12222;
+    border-color: #b12222;
+    background: #f6f7f7;
+    vertical-align: top;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
 .padding-horizontal-l {
     padding-left: var(--space-l);
     padding-right: var(--space-l);
